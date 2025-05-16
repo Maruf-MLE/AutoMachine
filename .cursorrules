@@ -1,0 +1,84 @@
+# RepetiGone AI: Project Rules and Patterns
+
+## Project Structure
+
+- The application follows the Next.js 15.2.4 App Router structure
+- Primary pages are in `app/` directory with nested routes
+- Components are divided into UI primitives (`components/ui/`) and composite components
+- Hooks are placed in `hooks/` directory
+- Utility functions are in `lib/` directory
+
+## UI Component Patterns
+
+### Component Structure
+- React components use TypeScript with proper type definitions
+- UI components are built on Radix UI primitives when possible
+- Tailwind CSS is used for styling with consistent class patterns
+- Components are designed to be responsive by default
+
+### Design System
+- Border radius: `rounded-xl` for cards, `rounded-2xl` for containers/modals
+- Button sizes: `size="lg"` for primary actions, default for secondary actions
+- Shadows: `shadow-sm` for subtle elevation, `shadow-md` for more prominent elements
+- Icons: Always use Lucide React icons with consistent sizing (`h-4 w-4` or `h-5 w-5`)
+- Forms: Inputs use `h-11` height for consistency
+
+### Implementation Details
+- Theme switching uses `next-themes` with `ThemeProvider`
+- Sidebar state is managed via `SidebarProvider` context
+- Form validation uses React Hook Form with Zod schemas
+- Interactive elements have hover and focus states defined
+
+## Naming Conventions
+
+- React components use PascalCase (e.g., `Button`, `AppSidebar`)
+- Files for React components use kebab-case (e.g., `app-sidebar.tsx`)
+- Hooks use camelCase with `use` prefix (e.g., `useIsMobile`)
+- Utility functions use camelCase (e.g., `cn` for className merging)
+- CSS variables use kebab-case with appropriate namespacing
+
+## Common Patterns
+
+### Layout Structure
+- Page components are wrapped in the main layout with sidebar
+- Auth pages use a separate centered layout
+- Content areas use consistent padding and spacing
+
+### State Management
+- Local component state uses React `useState` hook
+- Shared state uses React Context
+- Form state uses React Hook Form
+- UI state (like sidebar open/close) persists in cookies
+
+### API Integration (Future)
+- Will use Axios for API requests
+- API routes will be defined in `app/api/` directory
+- Data fetching will use React Query or SWR (to be determined)
+
+## Developer Workflow
+
+- Use `pnpm` for package management
+- Run `pnpm dev` for local development
+- CSS is processed through Tailwind and PostCSS
+- TypeScript is used for all code files
+
+## Code Style Preferences
+
+- Prefer arrow functions for component definitions
+- Use destructuring for props and state
+- Use optional chaining for potentially undefined values
+- Prefer named exports over default exports (except for page components)
+- Use Tailwind's `cn` utility for conditional class names
+
+## Future Implementation Notes
+
+- Backend will be implemented with Node.js/Express or similar
+- Authentication will use JWT tokens
+- Database schema will focus on user accounts, scripts, and execution logs
+- AI features will require separate ML service integration
+
+## Known Workarounds
+
+- Sidebar mobile behavior uses custom hook for detecting mobile viewport
+- Authentication currently uses setTimeout to simulate API calls
+- Demo data is hardcoded in the components 
